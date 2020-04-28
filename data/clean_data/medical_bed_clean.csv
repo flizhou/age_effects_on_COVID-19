@@ -1,0 +1,247 @@
+country,year_med_bed,med_bed
+Small states,1960,4.57515411748174
+Greenland,1970,14.3534002304077
+"Macao SAR, China",1970,5.29530000686646
+Channel Islands,1981,10.595100402832
+"Hong Kong SAR, China",1985,4.89090013504028
+Cayman Islands,1990,3
+Fragile and conflict affected situations,1990,1.42123993032334
+IDA total,1990,1.44943007620041
+IDA only,1990,0.974968637050281
+Least developed countries: UN classification,1990,0.731796545820335
+Papua New Guinea,1990,4.0241999626
+Pre-demographic dividend,1990,1.3293418500642
+Sub-Saharan Africa (excluding high income),1990,1.21257542231363
+Western Sahara,1990,1.21257542231363
+Sub-Saharan Africa (IDA & IBRD countries),1990,1.21257542231363
+Bermuda,1996,6.3000001907
+Puerto Rico,1996,3.3199999332
+West Bank and Gaza,1996,1.2000000477
+Virgin Islands (U.S.),1996,18.6800003052
+Tuvalu,2001,5.6
+IDA blend,2004,1.12268504239384
+Nigeria,2004,0.5
+Angola,2005,0.8
+"Congo, Rep.",2005,1.6
+Pacific island small states,2005,2.0768964148197
+Chad,2005,0.4
+Samoa,2005,1
+South Africa,2005,2.8
+Cote d'Ivoire,2006,0.4
+"Congo, Dem. Rep.",2006,0.8
+Heavily indebted poor countries (HIPC),2006,0.743511693980356
+Low income,2006,1.15048405799908
+Lesotho,2006,1.3
+Mauritania,2006,0.4
+Sierra Leone,2006,0.4
+Rwanda,2007,1.6
+Senegal,2008,0.3
+Vanuatu,2008,1.7
+Andorra,2009,2.5
+"Micronesia, Fed. Sts.",2009,3.2
+Guinea-Bissau,2009,1
+Isle of Man,2009,1.58427938375929
+Maldives,2009,4.3
+Namibia,2009,2.7
+Netherlands,2009,4.7
+Benin,2010,0.5
+Burkina Faso,2010,0.4
+Botswana,2010,1.8
+Cameroon,2010,1.3
+Comoros,2010,2.2
+Cabo Verde,2010,2.1
+Gabon,2010,6.3
+Equatorial Guinea,2010,2.1
+Kenya,2010,1.4
+Liberia,2010,0.8
+Madagascar,2010,0.2
+Marshall Islands,2010,2.7
+Mali,2010,0.1
+Nauru,2010,5
+Palau,2010,4.8
+Suriname,2010,3.1
+Thailand,2010,2.1
+Timor-Leste,2010,5.9
+Tonga,2010,2.6
+Tanzania,2010,0.7
+Uganda,2010,0.5
+Zambia,2010,2
+Central African Republic,2011,1
+Early-demographic dividend,2011,1.22517407197752
+Eritrea,2011,0.7
+Fiji,2011,2.3
+Ghana,2011,0.9
+Guinea,2011,0.3
+Gambia,2011,1.1
+IBRD only,2011,2.60296599868027
+IDA & IBRD total,2011,2.46092538632245
+India,2011,0.7
+Lower middle income,2011,0.986123631392897
+Low & middle income,2011,2.43200610494476
+Middle income,2011,2.40067312058978
+Mozambique,2011,0.7
+Mauritius,2011,3.4
+Malawi,2011,1.3
+Philippines,2011,1
+Paraguay,2011,1.3
+South Asia,2011,0.674261834507074
+Sao Tome and Principe,2011,2.9
+Eswatini,2011,2.1
+Seychelles,2011,3.6
+Togo,2011,0.7
+South Asia (IDA & IBRD),2011,0.674261834507074
+World,2011,2.70476928109424
+Zimbabwe,2011,1.7
+Bhutan,2012,1.7
+Canada,2012,2.7
+China,2012,4.2
+Dominica,2012,3.8
+East Asia & Pacific (excluding high income),2012,3.64740030992424
+East Asia & Pacific,2012,4.44360048737964
+Italy,2012,3.4
+Japan,2012,13.4
+St. Kitts and Nevis,2012,2.3
+Laos,2012,1.5
+Sri Lanka,2012,3.6
+Late-demographic dividend,2012,4.2193819656913
+Monaco,2012,13.8
+Myanmar,2012,0.9
+Montenegro,2012,4
+Mongolia,2012,7
+Nepal,2012,0.3
+South Korea,2012,13.2
+Solomon Islands,2012,1.4
+San Marino,2012,3.8
+Serbia,2012,5.7
+East Asia & Pacific (IDA & IBRD countries),2012,3.5142490496806
+Upper middle income,2012,3.84964733518275
+Albania,2013,2.9
+United Arab Emirates,2013,1.2
+Austria,2013,7.6
+Azerbaijan,2013,4.7
+Bulgaria,2013,6.8
+Bahamas,2013,2.9
+Bosnia and Herzegovina,2013,3.5
+Belarus,2013,11
+Central Europe and the Baltics,2013,6.42144666078239
+Switzerland,2013,4.7
+Chile,2013,2.2
+Caribbean small states,2013,2.26723392472779
+Cyprus,2013,3.4
+Germany,2013,8.3
+Europe & Central Asia (excluding high income),2013,6.3536554875275
+Europe & Central Asia,2013,5.92492146211432
+Ecuador,2013,1.5
+Euro area,2013,6.16749081248063
+Spain,2013,3
+European Union,2013,6.10828282710878
+France,2013,6.5
+United Kingdom,2013,2.8
+Georgia,2013,2.6
+High income,2013,4.11059905053985
+Haiti,2013,0.7
+Hungary,2013,7
+Ireland,2013,2.8
+Israel,2013,3.1
+Jamaica,2013,1.7
+Kazakhstan,2013,6.7
+Kyrgyz Republic,2013,4.5
+Saint Lucia,2013,1.3
+Lithuania,2013,7.3
+Latvia,2013,5.8
+Moldova,2013,5.8
+North Macedonia,2013,4.4
+North America,2013,2.9
+Norway,2013,3.9
+New Zealand,2013,2.8
+OECD members,2013,3.81428042462959
+Panama,2013,2.3
+Poland,2013,6.5
+Portugal,2013,3.4
+Post-demographic dividend,2013,4.60721290884284
+Romania,2013,6.3
+Russia,2013,8.2
+Sudan,2013,0.8
+Slovenia,2013,4.6
+Sweden,2013,2.6
+Europe & Central Asia (IDA & IBRD countries),2013,6.36194887522994
+Tajikistan,2013,4.8
+Turkmenistan,2013,7.4
+Turkey,2013,2.7
+Ukraine,2013,8.8
+United States,2013,2.9
+Uzbekistan,2013,4
+Arab World,2014,1.62452358185493
+Argentina,2014,5
+Antigua and Barbuda,2014,3.8
+Australia,2014,3.8
+Burundi,2014,0.8
+Belgium,2014,6.2
+Bahrain,2014,2
+Belize,2014,1.3
+Bolivia,2014,1.1
+Brazil,2014,2.2
+Barbados,2014,5.8
+Colombia,2014,1.5
+Cuba,2014,5.2
+Djibouti,2014,1.4
+Dominican Republic,2014,1.6
+Egypt,2014,1.6
+Grenada,2014,3.7
+Guatemala,2014,0.6
+Guyana,2014,1.6
+Honduras,2014,0.7
+Iran,2014,1.5
+Iraq,2014,1.4
+Iceland,2014,3.2
+Kuwait,2014,2
+Latin America & Caribbean (excluding high income),2014,2.16290513214949
+Lebanon,2014,2.9
+Libya,2014,3.7
+Latin America & Caribbean,2014,2.17327725929248
+Morocco,2014,1.1
+Middle East & North Africa,2014,1.62848507118594
+Malta,2014,4.7
+Middle East & North Africa (excluding high income),2014,1.51669671692738
+Nicaragua,2014,0.9
+Oman,2014,1.6
+Pakistan,2014,0.6
+Peru,2014,1.6
+Qatar,2014,1.2
+Saudi Arabia,2014,2.7
+El Salvador,2014,1.3
+Somalia,2014,0.9
+Syria,2014,1.5
+Latin America & the Caribbean (IDA & IBRD countries),2014,2.08967547696012
+Middle East & North Africa (IDA & IBRD countries),2014,1.51669671692738
+Trinidad and Tobago,2014,3
+Uruguay,2014,2.8
+Saint Vincent and the Grenadines,2014,2.6
+Venezuela,2014,0.8
+Vietnam,2014,2.6
+Yemen,2014,0.7
+Afghanistan,2015,0.5
+Armenia,2015,4.2
+Bangladesh,2015,0.8
+Brunei,2015,2.7
+Costa Rica,2015,1.2
+Czechia,2015,6.5
+Denmark,2015,2.5
+Algeria,2015,1.9
+Estonia,2015,5
+Ethiopia,2015,0.3
+Finland,2015,4.4
+Greece,2015,4.3
+Croatia,2015,5.6
+Indonesia,2015,1.2
+Jordan,2015,1.4
+Cambodia,2015,0.8
+Kiribati,2015,1.9
+"Korea, Rep.",2015,11.5
+Luxembourg,2015,4.8
+Mexico,2015,1.5
+Malaysia,2015,1.9
+Niger,2015,0.3
+Singapore,2015,2.4
+Slovakia,2015,5.8
+Tunisia,2015,2.3

@@ -1,0 +1,254 @@
+country,year_physicians,physicians
+Greenland,1980,1.135
+Channel Islands,1981,1.522
+"Macao SAR, China",1987,1.562
+Aruba,1995,1.12
+"Hong Kong SAR, China",1995,1.319
+Puerto Rico,1995,1.75
+Virgin Islands (U.S.),1995,1.645
+Bermuda,1997,1.766
+Cayman Islands,1997,1.939
+American Samoa,1999,0.781
+Guam,1999,1.084
+Northern Mariana Islands,1999,0.445
+New Caledonia,1999,1.982
+French Polynesia,2000,1.697
+West Bank and Gaza,2001,0.837
+Venezuela,2001,1.924
+Eritrea,2004,0.0557
+Saint Lucia,2009,0.1053
+"Micronesia, Fed. Sts.",2010,0.177
+Isle of Man,2010,1.449
+Lesotho,2010,0.0676
+Namibia,2010,0.374
+Philippines,2010,1.275
+Papua New Guinea,2010,0.0529
+Saint Vincent and the Grenadines,2010,0.6587
+Cameroon,2011,0.0898
+"Congo, Rep.",2011,0.1159
+Sierra Leone,2011,0.025
+Comoros,2012,0.1699
+Marshall Islands,2012,0.4554
+Bosnia and Herzegovina,2013,2.0003
+"Congo, Dem. Rep.",2013,0.09
+Costa Rica,2013,1.1497
+Kiribati,2013,0.2028
+Nigeria,2013,0.3827
+Tonga,2013,0.5223
+Armenia,2014,2.899
+Azerbaijan,2014,3.4466
+Bulgaria,2014,3.9879
+Belarus,2014,4.0772
+Cote d'Ivoire,2014,0.2326
+Djibouti,2014,0.2203
+Kazakhstan,2014,3.2522
+Kenya,2014,0.1988
+Kyrgyz Republic,2014,1.876
+Cambodia,2014,0.1682
+Laos,2014,0.4997
+Monaco,2014,6.5617
+Madagascar,2014,0.1812
+Niger,2014,0.05
+Palau,2014,1.1848
+San Marino,2014,6.1468
+Somalia,2014,0.0229
+Tajikistan,2014,1.7003
+Turkmenistan,2014,2.2248
+Turkey,2014,1.7605
+Tuvalu,2014,0.9174
+Tanzania,2014,0.0399
+Ukraine,2014,3.0075
+Uzbekistan,2014,2.3685
+Yemen,2014,0.3104
+Zimbabwe,2014,0.0763
+Andorra,2015,3.3333
+Arab World,2015,1.09730257439853
+Bahrain,2015,0.9257
+Brunei,2015,1.7701
+Central African Republic,2015,0.0629
+Central Europe and the Baltics,2015,2.88071606891767
+China,2015,1.7855
+Cabo Verde,2015,0.7694
+Caribbean small states,2015,1.56862756546055
+East Asia & Pacific (excluding high income),2015,1.47614850035586
+Early-demographic dividend,2015,0.940110841099725
+East Asia & Pacific,2015,1.57677255193971
+Europe & Central Asia (excluding high income),2015,3.04527637050058
+Europe & Central Asia,2015,3.37292525195215
+Euro area,2015,3.84775760417248
+European Union,2015,3.68686691272208
+Fragile and conflict affected situations,2015,0.387336792351543
+Fiji,2015,0.8374
+Georgia,2015,5.0976
+Gambia,2015,0.1077
+Guinea-Bissau,2015,0.2
+High income,2015,3.00354461372993
+Heavily indebted poor countries (HIPC),2015,0.157673894007864
+IBRD only,2015,1.45611305770463
+IDA & IBRD total,2015,1.205736970898
+IDA total,2015,0.444726495385134
+IDA blend,2015,0.719938912438773
+IDA only,2015,0.301557494177189
+Iran,2015,1.14
+St. Kitts and Nevis,2015,2.523
+Kuwait,2015,2.5789
+Latin America & Caribbean (excluding high income),2015,2.19020002816464
+Liberia,2015,0.0373
+Latin America & Caribbean,2015,2.16993112325967
+Least developed countries: UN classification,2015,0.258515594124712
+Low income,2015,0.324906629199297
+Lower middle income,2015,0.74709085356065
+Low & middle income,2015,1.21785163056599
+Late-demographic dividend,2015,1.94568942740016
+Moldova,2015,3.2002
+Middle East & North Africa,2015,1.25940059965317
+Middle income,2015,1.32241987324859
+North Macedonia,2015,2.8736
+Malta,2015,3.826
+Middle East & North Africa (excluding high income),2015,1.0694376664304
+Montenegro,2015,2.3337
+Mauritius,2015,2.0246
+Malaysia,2015,1.5132
+North America,2015,2.59634252096956
+Nauru,2015,1.2389
+OECD members,2015,2.89193928589428
+Other small states,2015,0.765803865988685
+Pakistan,2015,0.9753
+Pre-demographic dividend,2015,0.218402844870904
+Pacific island small states,2015,0.478550725949962
+Post-demographic dividend,2015,3.16217911564191
+South Asia,2015,0.768127522861804
+Sudan,2015,0.41
+Sub-Saharan Africa (excluding high income),2015,0.219576267047523
+Western Sahara,2015,0.219645395939687
+Small states,2015,0.898737175403803
+Sao Tome and Principe,2015,0.32
+East Asia & Pacific (IDA & IBRD countries),2015,1.44864298658614
+Europe & Central Asia (IDA & IBRD countries),2015,2.99048061330749
+Togo,2015,0.0487
+Latin America & the Caribbean (IDA & IBRD countries),2015,2.05174292804733
+Middle East & North Africa (IDA & IBRD countries),2015,1.0694376664304
+South Asia (IDA & IBRD),2015,0.768127522861804
+Sub-Saharan Africa (IDA & IBRD countries),2015,0.219645395939687
+Trinidad and Tobago,2015,2.6697
+Uganda,2015,0.0908
+Upper middle income,2015,1.97128906930559
+World,2015,1.50212587214212
+Afghanistan,2016,0.284
+Albania,2016,1.1998
+United Arab Emirates,2016,2.3944
+Australia,2016,3.5874
+Austria,2016,5.1441
+Burundi,2016,0.05
+Belgium,2016,3.3234
+Benin,2016,0.1572
+Burkina Faso,2016,0.06
+Bolivia,2016,1.6111
+Botswana,2016,0.3688
+Switzerland,2016,4.2363
+Chile,2016,1.08
+Cyprus,2016,1.9511
+Czechia,2016,4.314
+Germany,2016,4.2087
+Denmark,2016,4.4567
+Algeria,2016,1.83
+Ecuador,2016,2.05
+Spain,2016,4.0691
+Estonia,2016,3.4651
+Finland,2016,3.808
+France,2016,3.2349
+Gabon,2016,0.3611
+Guinea,2016,0.0788
+Greece,2016,4.592
+Croatia,2016,2.9962
+Hungary,2016,3.2312
+Israel,2016,3.2176
+Japan,2016,2.4118
+Lithuania,2016,4.337
+Latvia,2016,3.1946
+Maldives,2016,1.0379
+Mexico,2016,2.2478
+Mali,2016,0.1393
+Mongolia,2016,2.8866
+Malawi,2016,0.0157
+Netherlands,2016,3.5067
+New Zealand,2016,3.0252
+Panama,2016,1.5699
+Peru,2016,1.27
+Poland,2016,2.3998
+Portugal,2016,3.3356
+Romania,2016,2.2586
+Russia,2016,4.0139
+Saudi Arabia,2016,2.39
+Senegal,2016,0.0692
+Singapore,2016,2.3063
+Solomon Islands,2016,0.1999
+El Salvador,2016,1.569
+Serbia,2016,3.125
+Slovakia,2016,2.4643
+Slovenia,2016,2.9953
+Sweden,2016,5.3996
+Eswatini,2016,0.0796
+Seychelles,2016,0.9458
+Syria,2016,1.22
+Chad,2016,0.0475
+Tunisia,2016,1.2722
+United States,2016,2.5948
+Vietnam,2016,0.8199
+Vanuatu,2016,0.1706
+Samoa,2016,0.3409
+Zambia,2016,0.0913
+Angola,2017,0.2149
+Argentina,2017,3.96
+Antigua and Barbuda,2017,2.7647
+Bangladesh,2017,0.5268
+Bahamas,2017,1.9373
+Belize,2017,1.1262
+Barbados,2017,2.4886
+Bhutan,2017,0.3715
+Canada,2017,2.6102
+Colombia,2017,2.0835
+Cuba,2017,8.19
+Dominica,2017,1.0825
+Dominican Republic,2017,1.56
+Egypt,2017,0.7902
+Ethiopia,2017,0.1
+United Kingdom,2017,2.8058
+Ghana,2017,0.18
+Equatorial Guinea,2017,0.4
+Grenada,2017,1.4471
+Honduras,2017,0.3144
+Indonesia,2017,0.3777
+India,2017,0.7776
+Ireland,2017,3.0861
+Iraq,2017,0.8217
+Iceland,2017,3.9701
+Italy,2017,4.0931
+Jamaica,2017,1.3199
+Jordan,2017,2.3436
+"Korea, Rep.",2017,2.3661
+Lebanon,2017,2.271
+Libya,2017,2.1581
+Sri Lanka,2017,0.958
+Luxembourg,2017,3.0266
+Morocco,2017,0.7273
+Myanmar,2017,0.864
+Mozambique,2017,0.0735
+Mauritania,2017,0.179
+Norway,2017,4.6336
+Nepal,2017,0.6507
+Oman,2017,1.9697
+South Korea,2017,3.6745
+Qatar,2017,8e-4
+Rwanda,2017,0.1346
+Thailand,2017,0.8096
+Timor-Leste,2017,0.7197
+Uruguay,2017,5.0499
+South Africa,2017,0.9101
+Brazil,2018,2.1499
+Guatemala,2018,0.355
+Guyana,2018,0.799
+Haiti,2018,0.2345
+Nicaragua,2018,1.0056
+Paraguay,2018,1.366
+Suriname,2018,1.2265
