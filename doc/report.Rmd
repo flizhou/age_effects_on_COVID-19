@@ -1,7 +1,7 @@
 ---
 title: "Population aging and COVID-19 death rate relationship analysis"
 author: "Fanli Zhou"
-date: "2020/5/6"
+date: "2020/5/15"
 output: 
   github_document:
     toc: true
@@ -86,7 +86,7 @@ Here is information of variables used in this study:
 
 ## Analysis Methods
 
-The multiple linear regression, GLM (General Linear Model) and bootstrapping algorithms or methods were used to study the relationship between the COVID-19 death rate and the portion of the senior. The Python programming language [@Python], the R programming language [@R] and the following Python/R packages were used: Pandas [@mckinney-proc-scipy-2010], requests, zipfile, io, json, knitr [@knitr], tidyverse [@tidyverse], MASS, mice, resample, testthat, rjson, repr, cowplot [@cowplot]. The code used to perform the analysis and create this report can be found here: https://github.com/flizhou/age_effects_on_COVID-19.
+The multiple linear regression, GLM (General Linear Model) and bootstrapping algorithms or methods were used to study the relationship between the COVID-19 death rate and the portion of the senior. The Python programming language [@Python], the R programming language [@R] and the following Python/R packages were used: Pandas [@mckinney-proc-scipy-2010], requests [@chandra2015python], knitr [@knitr], tidyverse [@tidyverse], MASS [@mass], mice [@mice], resample [@resample], testthat [@testthat], rjson [@rjson], repr [@repr]. The code used to perform the analysis and create this report can be found here: https://github.com/flizhou/age_effects_on_COVID-19.
 
 The following three functions were used to display model results and analysis.
 
@@ -173,7 +173,7 @@ plot_results <-  function (boot_results, var, model_results){
 
 I started my analysis with a multiple linear regression model to study the relationship between the COVID-19 death rate ($Y$, rate) and the portion of the senior ($X$, age_65up). A multiple linear regression model may not give me the most accurate model but is highly interpretable. To answer my research questions, I would sacrifice some accuracy for interpretability.
 
-I first tried the full model, which includes all confounding variables, and picked out potential useful confounding variables based on statistic significance (p-value < 0.05). Then I tested reduced models to decide which variables to include in the final model. Considering that I was doing multiple testing, I controlled for multiple comparisons using Benjamini & Hochberg (BH) False Discovery Rate (FDR) adjustment (setting FDR to 5%). Based on these analysis, my final model only includes `med_bed`, `death_100_ind`, and `confirmed_rate` as confounding variables.
+I first tried the full model, which includes all confounding variables, and picked out potential useful confounding variables based on statistic significance (p-value < 0.05). Then I tested reduced models to decide which variables to include in the final model. Considering that I was doing multiple testing, I controlled for multiple comparisons using Benjamini & Hochberg (BH) False Discovery Rate (FDR) adjustment (setting FDR to 5%). A detailed analysis process is in my [EDA notebook](https://github.com/flizhou/age_effects_on_COVID-19/blob/master/scripts/eda.ipynb). Based on these analysis, my final model only includes `med_bed`, `death_100_ind`, and `confirmed_rate` as confounding variables.
 
 ```{r data}
 # load the complete dataset that includes all confounding variables

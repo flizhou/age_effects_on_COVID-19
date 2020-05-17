@@ -1,7 +1,7 @@
 Population aging and COVID-19 death rate relationship analysis
 ================
 Fanli Zhou
-2020/5/6
+2020/5/15
 
   - [Summary](#summary)
   - [Introduction](#introduction)
@@ -115,10 +115,12 @@ bootstrapping algorithms or methods were used to study the relationship
 between the COVID-19 death rate and the portion of the senior. The
 Python programming language (Van Rossum and Drake 2009), the R
 programming language (R Core Team 2019) and the following Python/R
-packages were used: Pandas (McKinney 2010), requests, zipfile, io, json,
-knitr (Xie 2014), tidyverse (Wickham 2017), MASS, mice, resample,
-testthat, rjson, repr, cowplot (Wilke 2019). The code used to perform
-the analysis and create this report can be found here:
+packages were used: Pandas (McKinney 2010), requests (Chandra and
+Varanasi 2015), knitr (Xie 2014), tidyverse (Wickham 2017), MASS
+(Venables and Ripley 2002), mice (van Buuren and Groothuis-Oudshoorn
+2011), resample (Hesterberg 2015), testthat (Wickham 2011), rjson
+(Couture-Beil 2018), repr (Angerer, Kluyver, and Schulz 2019). The code
+used to perform the analysis and create this report can be found here:
 <https://github.com/flizhou/age_effects_on_COVID-19>.
 
 The following three functions were used to display model results and
@@ -218,9 +220,10 @@ significance (p-value \< 0.05). Then I tested reduced models to decide
 which variables to include in the final model. Considering that I was
 doing multiple testing, I controlled for multiple comparisons using
 Benjamini & Hochberg (BH) False Discovery Rate (FDR) adjustment (setting
-FDR to 5%). Based on these analysis, my final model only includes
-`med_bed`, `death_100_ind`, and `confirmed_rate` as confounding
-variables.
+FDR to 5%). A detailed analysis process is in my [EDA
+notebook](https://github.com/flizhou/age_effects_on_COVID-19/blob/master/scripts/eda.ipynb).
+Based on these analysis, my final model only includes `med_bed`,
+`death_100_ind`, and `confirmed_rate` as confounding variables.
 
 ``` r
 # load the complete dataset that includes all confounding variables
@@ -518,10 +521,39 @@ well-designed experiments that control confouding variables.
 
 <div id="refs" class="references">
 
+<div id="ref-repr">
+
+Angerer, Philipp, Thomas Kluyver, and Jan Schulz. 2019. *Repr:
+Serializable Representations*.
+<https://CRAN.R-project.org/package=repr>.
+
+</div>
+
 <div id="ref-cdc">
 
 cdc.gov. 2020. “Older Adults.” CDC.
 <https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/older-adults.html>.
+
+</div>
+
+<div id="ref-chandra2015python">
+
+Chandra, Rakesh Vidya, and Bala Subrahmanyam Varanasi. 2015. *Python
+Requests Essentials*. Packt Publishing Ltd.
+
+</div>
+
+<div id="ref-rjson">
+
+Couture-Beil, Alex. 2018. *Rjson: JSON for R*.
+<https://CRAN.R-project.org/package=rjson>.
+
+</div>
+
+<div id="ref-resample">
+
+Hesterberg, Tim. 2015. *Resample: Resampling Functions*.
+<https://CRAN.R-project.org/package=resample>.
 
 </div>
 
@@ -541,6 +573,15 @@ Computing*. Vienna, Austria: R Foundation for Statistical Computing.
 
 </div>
 
+<div id="ref-mice">
+
+van Buuren, Stef, and Karin Groothuis-Oudshoorn. 2011. “mice:
+Multivariate Imputation by Chained Equations in R.” *Journal of
+Statistical Software* 45 (3): 1–67.
+<https://www.jstatsoft.org/v45/i03/>.
+
+</div>
+
 <div id="ref-Python">
 
 Van Rossum, Guido, and Fred L. Drake. 2009. *Python 3 Reference Manual*.
@@ -548,18 +589,25 @@ Scotts Valley, CA: CreateSpace.
 
 </div>
 
-<div id="ref-tidyverse">
+<div id="ref-mass">
 
-Wickham, Hadley. 2017. *Tidyverse: Easily Install and Load the
-’Tidyverse’*. <https://CRAN.R-project.org/package=tidyverse>.
+Venables, W. N., and B. D. Ripley. 2002. *Modern Applied Statistics with
+S*. Fourth. New York: Springer. <http://www.stats.ox.ac.uk/pub/MASS4>.
 
 </div>
 
-<div id="ref-cowplot">
+<div id="ref-testthat">
 
-Wilke, Claus O. 2019. *Cowplot: Streamlined Plot Theme and Plot
-Annotations for ’Ggplot2’*.
-<https://CRAN.R-project.org/package=cowplot>.
+Wickham, Hadley. 2011. “Testthat: Get Started with Testing.” *The R
+Journal* 3: 5–10.
+<https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf>.
+
+</div>
+
+<div id="ref-tidyverse">
+
+———. 2017. *Tidyverse: Easily Install and Load the ’Tidyverse’*.
+<https://CRAN.R-project.org/package=tidyverse>.
 
 </div>
 
