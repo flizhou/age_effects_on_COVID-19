@@ -181,16 +181,18 @@ age\_65up). A multiple linear regression model may not give me the most
 accurate model but is highly interpretable. To answer my research
 questions, I would sacrifice some accuracy for interpretability.
 
-I first tried the full model, which includes all confounding variables
+I first tried the full model, which includes all confounding variables,
 and picked out potential useful confounding variables based on statistic
 significance (p-value \< 0.05). Then I tested reduced models to decide
 which variables to include in the final model. Considering that I was
 doing multiple testing, I controlled for multiple comparisons using
 Benjamini & Hochberg (BH) False Discovery Rate (FDR) adjustment (setting
-FDR to 5%). I included `med_bed`, `death_100_ind`, and `confirmed_rate`
-in my final model.
+FDR to 5%). Based on these analysis, my final model only includes
+`med_bed`, `death_100_ind`, and `confirmed_rate` as confounding
+variables.
 
 ``` r
+# load the complete dataset that includes all confounding variables
 data <- read_csv("../data/clean_data/complete_data.csv")
 ```
 
@@ -213,6 +215,7 @@ data <- read_csv("../data/clean_data/complete_data.csv")
     ## )
 
 ``` r
+# remove confounding variables that won't be used in the final model
 df_sub <- data %>%
     select(country, rate, age_65up, med_bed, 
            death_100_ind, confirmed_rate) %>%
@@ -231,6 +234,7 @@ head(df_sub)
     ## 6 Australia   0.0140    15.7      3.8         0.545     0.00225
 
 ``` r
+# the final multiple linear regression model
 model_1 <- lm(rate ~ age_65up + med_bed + death_100_ind + confirmed_rate, df_sub[-1])
 
 analyze_lm(model_1)
@@ -245,10 +249,10 @@ analyze_lm(model_1)
     ## 4 death_100_i~ -0.0383   0.0124       -3.10   2.35e-3      0.00588   TRUE       
     ## 5 confirmed_r~  1.65     0.596         2.77   6.28e-3      0.0105    TRUE
 
-To assess the model, I need to check whether the “LINE” conditions for
-multiple linear regression hold for this model. The data were collected
-in each country independently, so I would assume that the independence
-assumption is reasonable.
+To assess this model, I checked whether the “LINE” conditions for
+multiple linear regression hold. The data were collected in each country
+independently, so I would assume that the independence assumption is
+reasonable. Then, let’s look at the rest assumptions:
 
 ``` r
 # plot model diagnostics
@@ -288,12 +292,11 @@ df_sub[-1] %>%
     ## data:  .
     ## Bartlett's K-squared = 3706.3, df = 4, p-value < 2.2e-16
 
-Then, let’s look at the rest assumptions: First, check the Residuals vs
-Fitted plot for the linearity assumption. Residuals should have zero
-expectations at each fitted value. There are some obvious patterns in
-the plot and the averages of residuals are away from zero. So the
-linearity assumption does not hold and the LSE (Least Squares Estimator)
-might be biased and even inconsistent.
+First, check the Residuals vs Fitted plot for the linearity assumption.
+Residuals should have zero expectations at each fitted value. There are
+some obvious patterns in the plot and the averages of residuals are away
+from zero. So the linearity assumption does not hold and the LSE (Least
+Squares Estimator) might be biased and even inconsistent.
 
 Second, check the Normal Q-Q plot for the normality assumption.
 Deviations of the lower and upper tails from the straight line indicates
@@ -310,15 +313,15 @@ may not be the BLUE (Best Linear Unbiased Estimator).
 Finally, check the Residuals vs. Leverage plot for influential points.
 Three point are labeled for high Cook’s distance values.
 
-The model violates most of the “LINE” conditions. I would next consider
+The model violates most of the “LINE” conditions. I next considered
 improving the model with data transformation and GLM (General Linear
 Model).
 
 ## 2\. Data transformation and GLM
 
-I’ll find out the way to improve the model by trial and error. The
-process is omitted here. Note that the final model is the best model
-identified, not necessary the best model.
+I tried to improve the model by trial and error. Here is the final model
+I got. The final model was the best model identified, but not necessary
+the best model.
 
 ``` r
 model_2 <- df_sub %>%
@@ -339,8 +342,8 @@ analyze_lm(model_2)
     ## 4 log(death_10~ -0.113    0.0245       -4.61  8.91e-6      0.0000446 TRUE       
     ## 5 log(confirme~ -0.00312  0.000981     -3.18  1.79e-3      0.00223   TRUE
 
-Again I’ll check whether the “LINE” conditions to assess the model. The
-independence assumption is reasonable as before. For the rest
+Again I checked whether the “LINE” conditions hold to assess the model.
+The independence assumption is reasonable as before. For the rest
 assumptions:
 
 ``` r
@@ -390,16 +393,15 @@ vs. Leverage plot.
 
 The final model still violates some of the “LINE” conditions. So it may
 be not be reasonable to use the theoretical inferential conclusions.
-Instead, I’ll use bootstrapping as an alternative approach to
-statistical inference.
+Instead, I used bootstrapping as an alternative approach to statistical
+inference.
 
 ## 3\. Bootstrapping
 
-I’ll take bootstrap samples from 133 countries in df\_sub with
-replacement. This is case resampling, so the information from each
-country remain together. Note that I’ll have to drop the
-log(confirmed\_rate) term in the formula to make the glm results
-converge.
+I took bootstrap samples from 133 countries in `df_sub` with
+replacement. This wa case resampling, so the information from each
+country remained together. Here I had to drop the `log(confirmed_rate)`
+term in the formula to make the `glm` results converge.
 
 ``` r
 set.seed(12345)
@@ -440,14 +442,14 @@ plot_results(boot_results, "log(death_100_ind + 1)", model_3_results)
 
 ![](report_files/figure-gfm/model%203-3.png)<!-- -->
 
-Based on the bootstrapping results, the coefficients of log(age\_65up),
-log(med\_bed), log(death\_100\_ind + 1) are all significant (p-value \<
+Based on the bootstrapping results, the coefficients of `log(age_65up)`,
+`log(med_bed)`, `log(death_100_ind + 1)` are all significant (p-value \<
 0.05).
 
 ## Conclusions
 
 In this analysis, I attempted to use a linear model to explain the
-relationship between the portion of the senior (age\_65up%) in the
+relationship between the portion of the senior (`age_65up`%) in the
 population and the COVID-19 death rate. I tried several linear models
 and finally decided to train a generalized linear model with a
 Gamma-distribution dependent variable. My final model is:
@@ -462,7 +464,7 @@ that this is a simplified model and I may not include all possible
 confounding variables in the model. And the “LINE” conditions for
 multiple linear models may not hold for this model. So I used
 bootstrapping for statistical inference. Given the bootstrapping
-results, the coefficient of log(age\_65up) is significant (p-value \<
+results, the coefficient of `log(age_65up)` is significant (p-value \<
 0.05). I have the evidence to reject the null hypothesis and accept the
 alternative hypothesis. So the portion of the senior (age 65 and up) in
 the population (population aging) is associated with the COVID-19 death
