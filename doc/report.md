@@ -502,7 +502,17 @@ the population is positively associated with the COVID-19 death rate.
 
 # Limitations
 
-data are not up-to-date Other confounding variables
+My analysis is based on observational datasets. Some country statistics
+data used in this analysis are not up-to-date. And the government
+response index, the stringency index from the [Oxford Covid-19
+Government Response Tracker
+data](https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv),
+is subjective and may not reflect how effective the goernment response
+was. Another big limitation that I could not include all possible
+confounding variables in this analysis and I may have ignored some
+important confounding variables. The best way to analyze the
+relationship between age and the COVID-19 death rate is by conducting
+well-designed experiments that control confouding variables.
 
 # References
 
