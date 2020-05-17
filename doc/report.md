@@ -20,6 +20,23 @@ Fanli Zhou
 
 # Introduction
 
+The world is fighting with the COVID-19. The COVID-19 is a new disease
+and we are updating our knowledge about it everyday. One well document
+factor that leads to death from COVID-19 is age. As reported by the US
+[CDC](https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/older-adults.html),
+adults 65 years old and older have high risk “for developing more
+serious complications from COVID-19 illness” (cdc.gov 2020). In other
+word, the COVID-19 death rate for the senior is higher than that for the
+younger people. This conclusion is based on the COVID-19 deaths
+statistics in the US.
+
+To further support this conclusion, I decided to study the relationship
+bewteen age and the COVID-19 death rate with data science techniques.
+Considering that COVID-19 patient information would not be public to
+protect privacy, I would instead study the relationship between
+population aging and the COVID-19 death rate. Here is my research
+question:
+
 **Does the portion of the senior (age 65 and up) in the population
 (population aging) associate with the COVID-19 death rate?**
 
@@ -35,6 +52,10 @@ Fanli Zhou
     
       - The portion of the senior (age 65 and up) in the population
         (population aging) is associated with the COVID-19 death rate.
+
+This study would help address the relationship between age and the
+COVID-19 death rate. And hopefully, it would bring more attentions to
+protect the senior people from COVID-19 and protect ourselves.
 
 # Methods
 
@@ -399,7 +420,7 @@ inference.
 ## 3\. Bootstrapping
 
 I took bootstrap samples from 133 countries in `df_sub` with
-replacement. This wa case resampling, so the information from each
+replacement. This was case resampling, so the information from each
 country remained together. Here I had to drop the `log(confirmed_rate)`
 term in the formula to make the `glm` results converge.
 
@@ -475,6 +496,13 @@ rate.
 # References
 
 <div id="refs" class="references">
+
+<div id="ref-cdc">
+
+cdc.gov. 2020. “Older Adults.” CDC.
+<https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/older-adults.html>.
+
+</div>
 
 <div id="ref-mckinney-proc-scipy-2010">
 
