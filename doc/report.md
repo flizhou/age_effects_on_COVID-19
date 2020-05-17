@@ -261,12 +261,12 @@ head(df_sub)
     ## # A tibble: 6 x 6
     ##   country       rate age_65up med_bed death_100_ind confirmed_rate
     ##   <chr>        <dbl>    <dbl>   <dbl>         <dbl>          <dbl>
-    ## 1 Afghanistan 0.0253     2.58     0.5         0.878     0.000163  
-    ## 2 Albania     0.0338    13.7      2.9         1         0.000320  
-    ## 3 Algeria     0.0809     6.36     1.9         0.469     0.000157  
+    ## 1 Afghanistan 0.0241     2.58     0.5         0.889     0.000152  
+    ## 2 Albania     0.0345    13.7      2.9         1         0.000313  
+    ## 3 Algeria     0.0821     6.36     1.9         0.475     0.000153  
     ## 4 Angola      0.0417     2.22     0.8         1         0.00000156
-    ## 5 Argentina   0.0476    11.1      5           0.568     0.000168  
-    ## 6 Australia   0.0139    15.7      3.8         0.541     0.00225
+    ## 5 Argentina   0.0495    11.1      5           0.575     0.000160  
+    ## 6 Australia   0.0140    15.7      3.8         0.545     0.00225
 
 ``` r
 # the final multiple linear regression model
@@ -278,11 +278,11 @@ analyze_lm(model_1)
     ## # A tibble: 5 x 7
     ##   term         estimate std.error statistic   p.value p.value.adjust significant
     ##   <chr>           <dbl>     <dbl>     <dbl>     <dbl>          <dbl> <lgl>      
-    ## 1 (Intercept)   0.0631   0.0126        5.00   1.72e-6     0.00000861 TRUE       
-    ## 2 age_65up      0.00162  0.000610      2.66   8.75e-3     0.0109     TRUE       
-    ## 3 med_bed      -0.00316  0.00148      -2.13   3.51e-2     0.0351     TRUE       
-    ## 4 death_100_i~ -0.0393   0.0120       -3.26   1.39e-3     0.00348    TRUE       
-    ## 5 confirmed_r~  1.61     0.576         2.80   5.79e-3     0.00964    TRUE
+    ## 1 (Intercept)   0.0639   0.0130        4.93   2.32e-6      0.0000116 TRUE       
+    ## 2 age_65up      0.00158  0.000622      2.53   1.25e-2      0.0156    TRUE       
+    ## 3 med_bed      -0.00333  0.00151      -2.20   2.91e-2      0.0291    TRUE       
+    ## 4 death_100_i~ -0.0383   0.0124       -3.10   2.35e-3      0.00588   TRUE       
+    ## 5 confirmed_r~  1.65     0.596         2.77   6.28e-3      0.0105    TRUE
 
 To assess this model, I checked whether the “LINE” conditions for
 multiple linear regression hold. The data were collected in each country
@@ -313,7 +313,7 @@ rstatix::shapiro_test(residuals(model_1))
     ## # A tibble: 1 x 3
     ##   variable           statistic      p.value
     ##   <chr>                  <dbl>        <dbl>
-    ## 1 residuals(model_1)     0.905 0.0000000418
+    ## 1 residuals(model_1)     0.903 0.0000000315
 
 ``` r
 # Compute Bartlett test of homogeneity of variances
@@ -325,7 +325,7 @@ df_sub[-1] %>%
     ##  Bartlett test of homogeneity of variances
     ## 
     ## data:  .
-    ## Bartlett's K-squared = 3676.3, df = 4, p-value < 2.2e-16
+    ## Bartlett's K-squared = 3706.3, df = 4, p-value < 2.2e-16
 
 First, check the Residuals vs Fitted plot for the linearity assumption.
 Residuals should have zero expectations at each fitted value. There are
@@ -371,11 +371,11 @@ analyze_lm(model_2)
     ## # A tibble: 5 x 7
     ##   term          estimate std.error statistic  p.value p.value.adjust significant
     ##   <chr>            <dbl>     <dbl>     <dbl>    <dbl>          <dbl> <lgl>      
-    ## 1 (Intercept)    0.0751   0.0176        4.27  3.56e-5      0.0000890 TRUE       
-    ## 2 log(age_65up)  0.0133   0.00356       3.74  2.65e-4      0.000441  TRUE       
-    ## 3 log(med_bed)  -0.00936  0.00333      -2.81  5.62e-3      0.00562   TRUE       
-    ## 4 log(death_10~ -0.112    0.0242       -4.64  8.02e-6      0.0000401 TRUE       
-    ## 5 log(confirme~ -0.00299  0.000976     -3.07  2.62e-3      0.00327   TRUE
+    ## 1 (Intercept)    0.0748   0.0178        4.21  4.51e-5      0.000113  TRUE       
+    ## 2 log(age_65up)  0.0138   0.00355       3.88  1.63e-4      0.000272  TRUE       
+    ## 3 log(med_bed)  -0.0102   0.00334      -3.06  2.67e-3      0.00267   TRUE       
+    ## 4 log(death_10~ -0.113    0.0245       -4.61  8.91e-6      0.0000446 TRUE       
+    ## 5 log(confirme~ -0.00312  0.000981     -3.18  1.79e-3      0.00223   TRUE
 
 Again I checked whether the “LINE” conditions hold to assess the model.
 The independence assumption is reasonable as before. For the rest
@@ -396,7 +396,7 @@ rstatix::shapiro_test(residuals(model_2))
     ## # A tibble: 1 x 3
     ##   variable           statistic p.value
     ##   <chr>                  <dbl>   <dbl>
-    ## 1 residuals(model_2)     0.984   0.103
+    ## 1 residuals(model_2)     0.985   0.120
 
 ``` r
 # Compute Bartlett test of homogeneity of variances
@@ -409,7 +409,7 @@ df_sub[-1] %>%
     ##  Bartlett test of homogeneity of variances
     ## 
     ## data:  .
-    ## Bartlett's K-squared = 3678.4, df = 4, p-value < 2.2e-16
+    ## Bartlett's K-squared = 3708.5, df = 4, p-value < 2.2e-16
 
 First, the averages of residuals are slightly smaller than zero in the
 Residuals vs Fitted plot but may not be a big problem. I would say that
@@ -450,6 +450,18 @@ model_3 <- df_sub %>%
 
 model_3_results <- analyze_lm(model_3)
 
+model_3_results
+```
+
+    ## # A tibble: 4 x 7
+    ##   term           estimate std.error statistic p.value p.value.adjust significant
+    ##   <chr>             <dbl>     <dbl>     <dbl>   <dbl>          <dbl> <lgl>      
+    ## 1 (Intercept)      0.0850   0.0197       4.31 3.01e-5       0.000121 TRUE       
+    ## 2 log(age_65up)    0.0144   0.00428      3.37 9.82e-4       0.00113  TRUE       
+    ## 3 log(med_bed)    -0.0137   0.00338     -4.04 8.68e-5       0.000174 TRUE       
+    ## 4 log(death_100~  -0.0829   0.0249      -3.32 1.13e-3       0.00113  TRUE
+
+``` r
 boot_results <- df_sub %>%
     mutate(rate = (rate*(133 -1) + 2)/133) %>%
     rsample::bootstraps(N) %>% 
@@ -459,11 +471,7 @@ boot_results <- df_sub %>%
            tidy = map(lm, broom::tidy)) %>% 
     select(-splits, -lm) %>% 
     unnest(tidy)
-```
 
-    ## Warning: glm.fit: algorithm did not converge
-
-``` r
 plot_results(boot_results, "log(age_65up)", model_3_results)
 ```
 

@@ -32,10 +32,6 @@ get_max <- function(col) {
 
 data <- read_csv("../data/clean_data/complete_data.csv")
 
-df_sub <- data %>%
-    select(country, rate, age_65up, med_bed, con_500_ind, 
-           death_100_ind, confirmed_rate) %>%
-    drop_na()
 ```
 
 # Summary
@@ -271,6 +267,8 @@ model_3 <- df_sub %>%
         family = Gamma(link = "identity"), .)
 
 model_3_results <- analyze_lm(model_3)
+
+model_3_results
 
 boot_results <- df_sub %>%
     mutate(rate = (rate*(133 -1) + 2)/133) %>%
