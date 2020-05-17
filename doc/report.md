@@ -18,6 +18,17 @@ Fanli Zhou
 
 # Summary
 
+In this project, I attempted to use multiple linear regression and GLM
+models to study the relationship between the portion of the senior (age
+65 and up) in the population and the COVID-19 death rate. To approch
+this problem, I tested 11 potential confounding variables and several
+models. My final statistical model is a GLM model including only two
+confounding variables, `med_bed` (the number of hospital beds per 1,000
+people) and `death_100_ind` (the ratio of days with fewer than 100
+accumulated deaths since January 21th, 2020). I assessed the model with
+bootstrapping and provided some evidence that the COVID-19 death rate is
+positively associated with the portion of the senior in the population.
+
 # Introduction
 
 The world is fighting with the COVID-19. The COVID-19 is a new disease
@@ -38,20 +49,19 @@ population aging and the COVID-19 death rate. Here is my research
 question:
 
 **Does the portion of the senior (age 65 and up) in the population
-(population aging) associate with the COVID-19 death rate?**
+associate with the COVID-19 death rate?**
 
   - Null hypothesis (![H\_0](https://latex.codecogs.com/png.latex?H_0
     "H_0")):
     
-      - The portion of the senior (age 65 and up) in the population
-        (population aging) is not associated with the COVID-19 death
-        rate.
+      - The portion of the senior (age 65 and up) in the population is
+        not associated with the COVID-19 death rate.
 
   - Alternative hypothesis
     (![H\_A](https://latex.codecogs.com/png.latex?H_A "H_A")):
     
-      - The portion of the senior (age 65 and up) in the population
-        (population aging) is associated with the COVID-19 death rate.
+      - The portion of the senior (age 65 and up) in the population is
+        associated with the COVID-19 death rate.
 
 This study would help address the relationship between age and the
 COVID-19 death rate. And hopefully, it would bring more attentions to
@@ -488,10 +498,11 @@ bootstrapping for statistical inference. Given the bootstrapping
 results, the coefficient of `log(age_65up)` is significant (p-value \<
 0.05). I have the evidence to reject the null hypothesis and accept the
 alternative hypothesis. So the portion of the senior (age 65 and up) in
-the population (population aging) is associated with the COVID-19 death
-rate.
+the population is positively associated with the COVID-19 death rate.
 
 # Limitations
+
+data are not up-to-date Other confounding variables
 
 # References
 
