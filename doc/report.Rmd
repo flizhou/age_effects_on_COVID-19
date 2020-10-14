@@ -3,8 +3,7 @@ title: "Population aging and COVID-19 death rate relationship analysis"
 author: "Fanli Zhou"
 date: "2020/5/15"
 output: 
-  html_document:
-#  github_document:
+  github_document:
     toc: true
     pandoc_args: --webtex
 bibliography: report_refs.bib
@@ -37,24 +36,24 @@ data <- read_csv("../data/clean_data/complete_data.csv")
 
 # Summary
 
-In this project, I attempted to use multiple linear regression and general linear models to study the relationship between the portion of the senior (age 65 and up) in the population and the COVID-19 death rate. To approach this problem, I tested 11 potential confounding variables and several statistical models. My final statistical model is a GLM model including only two confounding variables, `med_bed` (the number of hospital beds per 1,000 people) and `death_100_ind` (the ratio of days with fewer than 100 accumulated deaths from 1/21/2020 to 5/14/2020). I assessed the model with bootstrapping and provided some evidence that the COVID-19 death rate is positively associated with the portion of the senior in the population. 
+In this project, I attempted to use multiple linear regression and general linear models to study the relationship between the portion of the senior (age 65 and up) in the population and the COVID-19 death rate. To approach this problem, I tested 11 potential confounding variables and several statistical models. My final statistical model is a GLM model including only two confounding variables, `med_bed` (the number of hospital beds per 1,000 people) and `death_100_ind` (the ratio of days with fewer than 100 accumulated deaths from 1/21/2020 to 5/14/2020). I assessed the model with bootstrapping and provided some evidence that the COVID-19 death rate is positively associated with the portion of the senior in the population.
 
 # Introduction
 
-The world is fighting with COVID-19. The COVID-19 is a new disease and we are updating our knowledge about it every day. One well document factor that leads to death from COVID-19 is age. As reported by the US [CDC](https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/older-adults.html), adults 65 years old and older have a high risk "for developing more serious complications from COVID-19 illness" [@cdc]. In other words, the COVID-19 death rate for the senior is higher than that for the younger people. This conclusion is based on the COVID-19 deaths statistics in the US. 
+The world is fighting with COVID-19. The COVID-19 is a new disease and we are updating our knowledge about it every day. One well document factor that leads to death from COVID-19 is age. As reported by the US [CDC](https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/older-adults.html), adults 65 years old and older have a high risk "for developing more serious complications from COVID-19 illness" [\@cdc]. In other words, the COVID-19 death rate for the senior is higher than that for the younger people. This conclusion is based on the COVID-19 deaths statistics in the US.
 
 To further support this conclusion, I decided to study the relationship between age and the COVID-19 death rate with data science techniques. Considering that COVID-19 patient information would not be public to protect privacy, I would instead study the relationship between population aging and the COVID-19 death rate. Here is my research question:
 
 **Does the portion of the senior (age 65 and up) in the population associate with the COVID-19 death rate?**
 
-- Null hypothesis ($H_0$):
+-   Null hypothesis ($H\_0$):
 
-    + The portion of the senior (age 65 and up) in the population is not associated with the COVID-19 death rate.
+    -   The portion of the senior (age 65 and up) in the population is not associated with the COVID-19 death rate.
 
-- The alternative hypothesis ($H_A$):
+-   The alternative hypothesis ($H\_A$):
 
-    + The portion of the senior (age 65 and up) in the population is associated with the COVID-19 death rate.
-    
+    -   The portion of the senior (age 65 and up) in the population is associated with the COVID-19 death rate.
+
 This study would help address the relationship between age and the COVID-19 death rate. And hopefully, it would bring more attention to protect the senior people from COVID-19 and protect ourselves.
 
 # Methods
@@ -65,29 +64,29 @@ The two COVID-19 datasets, [the global confirmed dataset](https://github.com/CSS
 
 Here is the information of variables used in this study:
 
-|varaiable Name|Min|Max|Description and Source|
-|-|-|-|-|
-|`rate`|`r get_min("rate")`|`r get_max("rate")`|For each country, the death rate (by 5/14/2020) is calculated by $\frac{N_{\text{COVID-19 death}}}{N_{\text{COVID-19 confirmed}}}$ with data from [global confirmed](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv) and [global death](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv) datasets|
-|`age_65up`|`r get_min("age_65up")`|`r get_max("age_65up")`|[Population ages 65 and above (% of total population)](https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS) from the [World Bank Open Data](https://data.worldbank.org/)|
-|`air_pollution`|`r get_min("air_pollution")`|`r get_max("air_pollution")`|[PM2.5 air pollution, mean annual exposure (micrograms per cubic meter)](https://data.worldbank.org/indicator/EN.ATM.PM25.MC.M3) from the World Bank Open Data|
-|`med_bed`|`r get_min("med_bed")`|`r get_max("med_bed")`|[Hospital beds (per 1,000 people)](https://data.worldbank.org/indicator/SH.MED.BEDS.ZS)|
-|`physicians`|`r get_min("physicians")`|`r get_max("physicians")`|[Physicians (per 1,000 people)](https://data.worldbank.org/indicator/SH.MED.PHYS.ZS) from the World Bank Open Data|
-|`nurses_midwives`|`r get_min("nurses_midwives")`|`r get_max("nurses_midwives")`|[Nurses and midwives (per 1,000 people)](https://data.worldbank.org/indicator/SH.MED.NUMW.P3) from the World Bank Open Data|
-|`pop_density`|`r get_min("pop_density")`|`r get_max("pop_density")`|[Population density (people per sq. km of land area)](https://data.worldbank.org/indicator/EN.POP.DNST) from the World Bank Open Data|
-|`smoking`|`r get_min("smoking")`|`r get_max("smoking")`|[Smoking prevalence, total (ages 15+)](https://data.worldbank.org/indicator/SH.PRV.SMOK) from the World Bank Open Data|
-|`con_500_ind`|`r get_min("con_500_ind")`|`r get_max("con_500_ind")`|The ratio of days with fewer than 500 confirmed cases (accumulated) is calculated by $\frac{N_{\text{days with 1-500 confirmed cases 1/21/2020-5/14/2020}}}{N_{\text{days with more than one confirmed cases 1/21/2020-5/14/2020}}}$ with data from the [global confirmed](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv) dataset|
-|`death_100_ind`|`r get_min("death_100_ind")`|`r get_max("death_100_ind")`|The ratio of days with fewer than 100 deaths (accumulated) is calculated by $\frac{N_{\text{days with 1-100 deaths 1/21/2020-5/14/2020}}}{N_{\text{days with more than one deaths since 1/21/2020-5/14/2020}}}$ with data from the [global death](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv) dataset|
-|`confirmed_rate`|`r get_min("confirmed_rate")`|`r get_max("confirmed_rate")`|The confirmed rate (by 5/14/2020) is calculated by $\frac{N_{\text{COVID-19 confirmed}}}{N_{\text{population}}}$ with data from the [global confirmed](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv) dataset and the [population, total](https://data.worldbank.org/indicator/SP.POP.TOTL) dataset from the World Bank Open Data|
-|`gov_resp`|`r get_min("gov_resp")`|`r get_max("gov_resp")`|This value is the highest stringency index (by 5/14/2020) for each country from the [Oxford Covid-19 Government Response Tracker data](https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv) from the [Oxford Covid-19 Government Response Tracker repository](https://github.com/OxCGRT/covid-policy-tracker/)|
-|`ind_80`|`r get_min("ind_80")`|`r get_max("ind_80")`|This index is calculated by $\frac{N_{\text{days with 0-80 stringency index 1/21/2020-5/14/2020}}}{N_{\text{days 1/21/2020-5/14/2020}}}$ with data from the [Oxford Covid-19 Government Response Tracker data](https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv)|
+| varaiable Name    | Min                            | Max                            | Description and Source                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|-------------------|--------------------------------|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `rate`            | `r get_min("rate")`            | `r get_max("rate")`            | For each country, the death rate (by 5/14/2020) is calculated by $\\frac{N\_{\\text{COVID-19 death}}}{N\_{\\text{COVID-19 confirmed}}}$ with data from [global confirmed](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv) and [global death](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv) datasets |
+| `age_65up`        | `r get_min("age_65up")`        | `r get_max("age_65up")`        | [Population ages 65 and above (% of total population)](https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS) from the [World Bank Open Data](https://data.worldbank.org/)                                                                                                                                                                                                                                                                                                                    |
+| `air_pollution`   | `r get_min("air_pollution")`   | `r get_max("air_pollution")`   | [PM2.5 air pollution, mean annual exposure (micrograms per cubic meter)](https://data.worldbank.org/indicator/EN.ATM.PM25.MC.M3) from the World Bank Open Data                                                                                                                                                                                                                                                                                                                                 |
+| `med_bed`         | `r get_min("med_bed")`         | `r get_max("med_bed")`         | [Hospital beds (per 1,000 people)](https://data.worldbank.org/indicator/SH.MED.BEDS.ZS)                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `physicians`      | `r get_min("physicians")`      | `r get_max("physicians")`      | [Physicians (per 1,000 people)](https://data.worldbank.org/indicator/SH.MED.PHYS.ZS) from the World Bank Open Data                                                                                                                                                                                                                                                                                                                                                                             |
+| `nurses_midwives` | `r get_min("nurses_midwives")` | `r get_max("nurses_midwives")` | [Nurses and midwives (per 1,000 people)](https://data.worldbank.org/indicator/SH.MED.NUMW.P3) from the World Bank Open Data                                                                                                                                                                                                                                                                                                                                                                    |
+| `pop_density`     | `r get_min("pop_density")`     | `r get_max("pop_density")`     | [Population density (people per sq. km of land area)](https://data.worldbank.org/indicator/EN.POP.DNST) from the World Bank Open Data                                                                                                                                                                                                                                                                                                                                                          |
+| `smoking`         | `r get_min("smoking")`         | `r get_max("smoking")`         | [Smoking prevalence, total (ages 15+)](https://data.worldbank.org/indicator/SH.PRV.SMOK) from the World Bank Open Data                                                                                                                                                                                                                                                                                                                                                                         |
+| `con_500_ind`     | `r get_min("con_500_ind")`     | `r get_max("con_500_ind")`     | The ratio of days with fewer than 500 confirmed cases (accumulated) is calculated by $\\frac{N\_{\\text{days with 1-500 confirmed cases 1/21/2020-5/14/2020}}}{N\_{\\text{days with more than one confirmed cases 1/21/2020-5/14/2020}}}$ with data from the [global confirmed](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv) dataset                                                          |
+| `death_100_ind`   | `r get_min("death_100_ind")`   | `r get_max("death_100_ind")`   | The ratio of days with fewer than 100 deaths (accumulated) is calculated by $\\frac{N\_{\\text{days with 1-100 deaths 1/21/2020-5/14/2020}}}{N\_{\\text{days with more than one deaths since 1/21/2020-5/14/2020}}}$ with data from the [global death](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv) dataset                                                                                      |
+| `confirmed_rate`  | `r get_min("confirmed_rate")`  | `r get_max("confirmed_rate")`  | The confirmed rate (by 5/14/2020) is calculated by $\\frac{N\_{\\text{COVID-19 confirmed}}}{N\_{\\text{population}}}$ with data from the [global confirmed](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv) dataset and the [population, total](https://data.worldbank.org/indicator/SP.POP.TOTL) dataset from the World Bank Open Data                                                          |
+| `gov_resp`        | `r get_min("gov_resp")`        | `r get_max("gov_resp")`        | This value is the highest stringency index (by 5/14/2020) for each country from the [Oxford Covid-19 Government Response Tracker data](https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv) from the [Oxford Covid-19 Government Response Tracker repository](https://github.com/OxCGRT/covid-policy-tracker/)                                                                                                                                         |
+| `ind_80`          | `r get_min("ind_80")`          | `r get_max("ind_80")`          | This index is calculated by $\\frac{N\_{\\text{days with 0-80 stringency index 1/21/2020-5/14/2020}}}{N\_{\\text{days 1/21/2020-5/14/2020}}}$ with data from the [Oxford Covid-19 Government Response Tracker data](https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv)                                                                                                                                                                               |
 
 ## Analysis Methods
 
-The multiple linear regression, GLM (General Linear Model), and bootstrapping algorithms or methods were used to study the relationship between the COVID-19 death rate and the portion of the senior. The Python programming language [@Python], the R programming language [@R] and the following Python/R packages were used: Pandas [@mckinney-proc-scipy-2010], requests [@chandra2015python], knitr [@knitr], tidyverse [@tidyverse], MASS [@mass], mice [@mice], resample [@resample], testthat [@testthat], rjson [@rjson], repr [@repr]. The code used to perform the analysis and create this report can be found here: https://github.com/flizhou/age_effects_on_COVID-19.
+The multiple linear regression, GLM (General Linear Model), and bootstrapping algorithms or methods were used to study the relationship between the COVID-19 death rate and the portion of the senior. The Python programming language [\@Python], the R programming language [\@R] and the following Python/R packages were used: Pandas [\@mckinney-proc-scipy-2010], requests [\@chandra2015python], knitr [\@knitr], tidyverse [\@tidyverse], MASS [\@mass], mice [\@mice], resample [\@resample], testthat [\@testthat], rjson [\@rjson], repr [\@repr]. The code used to perform the analysis and create this report can be found here: <https://github.com/flizhou/age_effects_on_COVID-19>.
 
 The following three functions were used to display model results and analysis.
 
-``` {r}
+```{r}
 
 #' Report linear regression results
 #'
@@ -168,9 +167,9 @@ plot_results <-  function (boot_results, var, model_results){
 
 ## 1. multiple linear regression
 
-I started my analysis with a multiple linear regression model to study the relationship between the COVID-19 death rate ($Y$, rate) and the portion of the senior ($X$, age_65up). A multiple linear regression model may not give me the most accurate model but is highly interpretable. To answer my research questions, I would sacrifice some accuracy for interpretability.
+I started my analysis with a multiple linear regression model to study the relationship between the COVID-19 death rate ($Y$, rate) and the portion of the senior ($X$, age\_65up). A multiple linear regression model may not give me the most accurate model but is highly interpretable. To answer my research questions, I would sacrifice some accuracy for interpretability.
 
-I first tried the full model, which includes all confounding variables, and picked out potential useful confounding variables based on statistical significance (p-value < 0.05). Then I tested reduced models to decide which variables to include in the final model. Considering that I was doing multiple testing, I controlled for multiple comparisons using Benjamini & Hochberg (BH) False Discovery Rate (FDR) adjustment (setting FDR to 5%). A detailed analysis process is in my [EDA notebook](https://github.com/flizhou/age_effects_on_COVID-19/blob/master/scripts/eda.ipynb). Based on these analyses, my final model only includes `med_bed`, `death_100_ind`, and `confirmed_rate` as confounding variables.
+I first tried the full model, which includes all confounding variables, and picked out potential useful confounding variables based on statistical significance (p-value \< 0.05). Then I tested reduced models to decide which variables to include in the final model. Considering that I was doing multiple testing, I controlled for multiple comparisons using Benjamini & Hochberg (BH) False Discovery Rate (FDR) adjustment (setting FDR to 5%). A detailed analysis process is in my [EDA notebook](./scripts/eda.ipynb). Based on these analyses, my final model only includes `med_bed`, `death_100_ind`, and `confirmed_rate` as confounding variables.
 
 ```{r data}
 # load the complete dataset that includes all confounding variables
@@ -248,8 +247,7 @@ First, the averages of residuals are slightly smaller than zero in the Residuals
 
 Second, the lower and upper tails are slightly away from the straight line in the Normal Q-Q plot. Besides, the Shapiro-Wilk test of normality is significant but the p-value is very close to 0.05. So there is some evidence that the normality assumption could be reasonable.
 
-Third, the Scale-Location plot has some trends so the variance is not constant. And the Bartlett test of homogeneity of variances is significant. So the normality assumption could not hold.
-Finally, three points are labeled for high Cook's distance values in the Residuals vs. Leverage plot.
+Third, the Scale-Location plot has some trends so the variance is not constant. And the Bartlett test of homogeneity of variances is significant. So the normality assumption could not hold. Finally, three points are labeled for high Cook's distance values in the Residuals vs. Leverage plot.
 
 The final model still violates some of the "LINE" conditions. So it may not be reasonable to use the theoretical inferential conclusions. Instead, I used bootstrapping as an alternative approach to statistical inference.
 
@@ -286,20 +284,18 @@ plot_results(boot_results, "log(med_bed)", model_3_results)
 plot_results(boot_results, "log(death_100_ind + 1)", model_3_results)
 ```
 
-
-Based on the bootstrapping results, the coefficients of `log(age_65up)`, `log(med_bed)`, `log(death_100_ind + 1)` are all significant (p-value < 0.05).
+Based on the bootstrapping results, the coefficients of `log(age_65up)`, `log(med_bed)`, `log(death_100_ind + 1)` are all significant (p-value \< 0.05).
 
 ## Conclusions
 
 In this analysis, I attempted to use a linear model to explain the relationship between the portion of the senior (`age_65up`%) in the population and the COVID-19 death rate. I tried several linear models and finally decided to train a generalized linear model with a Gamma-distribution dependent variable. My final model is:
 
-$\frac{132\text{rate}+2}{133}$ $=0.0850+0.0144\text{log(age_65up)}-0.0137\text{log(med_bed)}-0.0829\text{log(death_100_ind+1)}$
+$\frac{132\text{rate}+2}{133}$ $=\0.0850+\0.0144\text{log(age\_65up)}-\0.0137\text{log(med\_bed)}-\0.0829\text{log(death\_100\_ind+1)}$
 
-where the response (rate) follows a Gamma distribution.
-I understand that this is a simplified model and I may not include all possible confounding variables in the model. And the "LINE" conditions for multiple linear models may not hold for this model. So I used bootstrapping for statistical inference. Given the bootstrapping results, the coefficient of `log(age_65up)` is significant (p-value < 0.05). I have the evidence to reject the null hypothesis and accept the alternative hypothesis. So the portion of the senior (age 65 and up) in the population is positively associated with the COVID-19 death rate.
+where the response (rate) follows a Gamma distribution. I understand that this is a simplified model and I may not include all possible confounding variables in the model. And the "LINE" conditions for multiple linear models may not hold for this model. So I used bootstrapping for statistical inference. Given the bootstrapping results, the coefficient of `log(age_65up)` is significant (p-value \< 0.05). I have the evidence to reject the null hypothesis and accept the alternative hypothesis. So the portion of the senior (age 65 and up) in the population is positively associated with the COVID-19 death rate.
 
 # Limitations
- 
+
 My analysis is based on observational datasets. Some country statistics data used in this analysis are not up-to-date. And the government response index, the stringency index from the [Oxford Covid-19 Government Response Tracker data](https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv), is subjective and may not reflect how effective the government response was. Another big limitation that I could not include all possible confounding variables in this analysis and I may have ignored some important confounding variables. The best way to analyze the relationship between age and the COVID-19 death rate is by conducting well-designed experiments that control confounding variables.
 
 # References
