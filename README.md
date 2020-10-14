@@ -37,7 +37,7 @@ Data Analysis and Report
 The exploratory data analysis and complete data analysis is in the [eda
 notebook](https://github.com/flizhou/age_effects_on_COVID-19/blob/master/scripts/eda.ipynb)
 and the final report can be found
-[here](https://htmlpreview.github.io/?https://github.com/flizhou/age_effects_on_COVID-19/blob/master/doc/report.html)
+[here](https://github.com/flizhou/age_effects_on_COVID-19/blob/master/doc/report.md)
 
 Dependencies
 ------------
