@@ -39,9 +39,9 @@ we are updating our knowledge about it every day. One well document
 factor that leads to death from COVID-19 is age. As reported by the US
 [CDC](https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/older-adults.html),
 adults 65 years old and older have a high risk “for developing more
-serious complications from COVID-19 illness” \[@cdc\]. In other words,
-the COVID-19 death rate for the senior is higher than that for the
-younger people. This conclusion is based on the COVID-19 deaths
+serious complications from COVID-19 illness” (cdc.gov 2020). In other
+words, the COVID-19 death rate for the senior is higher than that for
+the younger people. This conclusion is based on the COVID-19 deaths
 statistics in the US.
 
 To further support this conclusion, I decided to study the relationship
@@ -97,21 +97,21 @@ contain mistakes.
 
 Here is the information of variables used in this study:
 
-| varaiable Name    | Min   | Max   | Description and Source                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-|-------------------|-------|-------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `rate`            | 0     | 0.16  | For each country, the death rate (by 5/14/2020) is calculated by ![\\\\frac{N\\\_{\\\\text{COVID-19 death}}}{N\\\_{\\\\text{COVID-19 confirmed}}}](https://latex.codecogs.com/png.latex?%5C%5Cfrac%7BN%5C_%7B%5C%5Ctext%7BCOVID-19%20death%7D%7D%7D%7BN%5C_%7B%5C%5Ctext%7BCOVID-19%20confirmed%7D%7D%7D "\\frac{N\_{\\text{COVID-19 death}}}{N\_{\\text{COVID-19 confirmed}}}") with data from [global confirmed](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv) and [global death](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv) datasets                                                                                                                                        |
-| `age_65up`        | 1.09  | 27.58 | [Population ages 65 and above (% of total population)](https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS) from the [World Bank Open Data](https://data.worldbank.org/)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| `air_pollution`   | 5.86  | 99.73 | [PM2.5 air pollution, mean annual exposure (micrograms per cubic meter)](https://data.worldbank.org/indicator/EN.ATM.PM25.MC.M3) from the World Bank Open Data                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| `med_bed`         | 0.1   | 13.4  | [Hospital beds (per 1,000 people)](https://data.worldbank.org/indicator/SH.MED.BEDS.ZS)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| `physicians`      | 0     | 8.19  | [Physicians (per 1,000 people)](https://data.worldbank.org/indicator/SH.MED.PHYS.ZS) from the World Bank Open Data                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `nurses_midwives` | 0.06  | 18.12 | [Nurses and midwives (per 1,000 people)](https://data.worldbank.org/indicator/SH.MED.NUMW.P3) from the World Bank Open Data                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| `pop_density`     | 2.04  | 7953  | [Population density (people per sq. km of land area)](https://data.worldbank.org/indicator/EN.POP.DNST) from the World Bank Open Data                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `smoking`         | 2     | 43.4  | [Smoking prevalence, total (ages 15+)](https://data.worldbank.org/indicator/SH.PRV.SMOK) from the World Bank Open Data                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| `con_500_ind`     | 0     | 1     | The ratio of days with fewer than 500 confirmed cases (accumulated) is calculated by ![\\\\frac{N\\\_{\\\\text{days with 1-500 confirmed cases 1/21/2020-5/14/2020}}}{N\\\_{\\\\text{days with more than one confirmed cases 1/21/2020-5/14/2020}}}](https://latex.codecogs.com/png.latex?%5C%5Cfrac%7BN%5C_%7B%5C%5Ctext%7Bdays%20with%201-500%20confirmed%20cases%201%2F21%2F2020-5%2F14%2F2020%7D%7D%7D%7BN%5C_%7B%5C%5Ctext%7Bdays%20with%20more%20than%20one%20confirmed%20cases%201%2F21%2F2020-5%2F14%2F2020%7D%7D%7D "\\frac{N\_{\\text{days with 1-500 confirmed cases 1/21/2020-5/14/2020}}}{N\_{\\text{days with more than one confirmed cases 1/21/2020-5/14/2020}}}") with data from the [global confirmed](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv) dataset |
-| `death_100_ind`   | 0     | 1     | The ratio of days with fewer than 100 deaths (accumulated) is calculated by ![\\\\frac{N\\\_{\\\\text{days with 1-100 deaths 1/21/2020-5/14/2020}}}{N\\\_{\\\\text{days with more than one deaths since 1/21/2020-5/14/2020}}}](https://latex.codecogs.com/png.latex?%5C%5Cfrac%7BN%5C_%7B%5C%5Ctext%7Bdays%20with%201-100%20deaths%201%2F21%2F2020-5%2F14%2F2020%7D%7D%7D%7BN%5C_%7B%5C%5Ctext%7Bdays%20with%20more%20than%20one%20deaths%20since%201%2F21%2F2020-5%2F14%2F2020%7D%7D%7D "\\frac{N\_{\\text{days with 1-100 deaths 1/21/2020-5/14/2020}}}{N\_{\\text{days with more than one deaths since 1/21/2020-5/14/2020}}}") with data from the [global death](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv) dataset                                                       |
-| `confirmed_rate`  | 0     | 0.04  | The confirmed rate (by 5/14/2020) is calculated by ![\\\\frac{N\\\_{\\\\text{COVID-19 confirmed}}}{N\\\_{\\\\text{population}}}](https://latex.codecogs.com/png.latex?%5C%5Cfrac%7BN%5C_%7B%5C%5Ctext%7BCOVID-19%20confirmed%7D%7D%7D%7BN%5C_%7B%5C%5Ctext%7Bpopulation%7D%7D%7D "\\frac{N\_{\\text{COVID-19 confirmed}}}{N\_{\\text{population}}}") with data from the [global confirmed](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv) dataset and the [population, total](https://data.worldbank.org/indicator/SP.POP.TOTL) dataset from the World Bank Open Data                                                                                                                                                                                                           |
-| `gov_resp`        | 18.25 | 100   | This value is the highest stringency index (by 5/14/2020) for each country from the [Oxford Covid-19 Government Response Tracker data](https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv) from the [Oxford Covid-19 Government Response Tracker repository](https://github.com/OxCGRT/covid-policy-tracker/)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| `ind_80`          | 0.15  | 1     | This index is calculated by ![\\\\frac{N\\\_{\\\\text{days with 0-80 stringency index 1/21/2020-5/14/2020}}}{N\\\_{\\\\text{days 1/21/2020-5/14/2020}}}](https://latex.codecogs.com/png.latex?%5C%5Cfrac%7BN%5C_%7B%5C%5Ctext%7Bdays%20with%200-80%20stringency%20index%201%2F21%2F2020-5%2F14%2F2020%7D%7D%7D%7BN%5C_%7B%5C%5Ctext%7Bdays%201%2F21%2F2020-5%2F14%2F2020%7D%7D%7D "\\frac{N\_{\\text{days with 0-80 stringency index 1/21/2020-5/14/2020}}}{N\_{\\text{days 1/21/2020-5/14/2020}}}") with data from the [Oxford Covid-19 Government Response Tracker data](https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv)                                                                                                                                                                                                        |
+| varaiable Name    | Min   | Max   | Description and Source                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+|-------------------|-------|-------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `rate`            | 0     | 0.16  | For each country, the death rate (by 5/14/2020) is calculated by ![\\frac{N\\\_{\\text{COVID-19 death}}}{N\\\_{\\text{COVID-19 confirmed}}}](https://latex.codecogs.com/png.latex?%5Cfrac%7BN%5C_%7B%5Ctext%7BCOVID-19%20death%7D%7D%7D%7BN%5C_%7B%5Ctext%7BCOVID-19%20confirmed%7D%7D%7D "\frac{N\_{\text{COVID-19 death}}}{N\_{\text{COVID-19 confirmed}}}") with data from [global confirmed](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv) and [global death](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv) datasets                                                                                                                                        |
+| `age_65up`        | 1.09  | 27.58 | [Population ages 65 and above (% of total population)](https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS) from the [World Bank Open Data](https://data.worldbank.org/)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `air_pollution`   | 5.86  | 99.73 | [PM2.5 air pollution, mean annual exposure (micrograms per cubic meter)](https://data.worldbank.org/indicator/EN.ATM.PM25.MC.M3) from the World Bank Open Data                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `med_bed`         | 0.1   | 13.4  | [Hospital beds (per 1,000 people)](https://data.worldbank.org/indicator/SH.MED.BEDS.ZS)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `physicians`      | 0     | 8.19  | [Physicians (per 1,000 people)](https://data.worldbank.org/indicator/SH.MED.PHYS.ZS) from the World Bank Open Data                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `nurses_midwives` | 0.06  | 18.12 | [Nurses and midwives (per 1,000 people)](https://data.worldbank.org/indicator/SH.MED.NUMW.P3) from the World Bank Open Data                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `pop_density`     | 2.04  | 7953  | [Population density (people per sq. km of land area)](https://data.worldbank.org/indicator/EN.POP.DNST) from the World Bank Open Data                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `smoking`         | 2     | 43.4  | [Smoking prevalence, total (ages 15+)](https://data.worldbank.org/indicator/SH.PRV.SMOK) from the World Bank Open Data                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `con_500_ind`     | 0     | 1     | The ratio of days with fewer than 500 confirmed cases (accumulated) is calculated by ![\\frac{N\\\_{\\text{days with 1-500 confirmed cases 1/21/2020-5/14/2020}}}{N\\\_{\\text{days with more than one confirmed cases 1/21/2020-5/14/2020}}}](https://latex.codecogs.com/png.latex?%5Cfrac%7BN%5C_%7B%5Ctext%7Bdays%20with%201-500%20confirmed%20cases%201%2F21%2F2020-5%2F14%2F2020%7D%7D%7D%7BN%5C_%7B%5Ctext%7Bdays%20with%20more%20than%20one%20confirmed%20cases%201%2F21%2F2020-5%2F14%2F2020%7D%7D%7D "\frac{N\_{\text{days with 1-500 confirmed cases 1/21/2020-5/14/2020}}}{N\_{\text{days with more than one confirmed cases 1/21/2020-5/14/2020}}}") with data from the [global confirmed](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv) dataset |
+| `death_100_ind`   | 0     | 1     | The ratio of days with fewer than 100 deaths (accumulated) is calculated by ![\\frac{N\\\_{\\text{days with 1-100 deaths 1/21/2020-5/14/2020}}}{N\\\_{\\text{days with more than one deaths since 1/21/2020-5/14/2020}}}](https://latex.codecogs.com/png.latex?%5Cfrac%7BN%5C_%7B%5Ctext%7Bdays%20with%201-100%20deaths%201%2F21%2F2020-5%2F14%2F2020%7D%7D%7D%7BN%5C_%7B%5Ctext%7Bdays%20with%20more%20than%20one%20deaths%20since%201%2F21%2F2020-5%2F14%2F2020%7D%7D%7D "\frac{N\_{\text{days with 1-100 deaths 1/21/2020-5/14/2020}}}{N\_{\text{days with more than one deaths since 1/21/2020-5/14/2020}}}") with data from the [global death](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv) dataset                                                       |
+| `confirmed_rate`  | 0     | 0.04  | The confirmed rate (by 5/14/2020) is calculated by ![\\frac{N\\\_{\\text{COVID-19 confirmed}}}{N\\\_{\\text{population}}}](https://latex.codecogs.com/png.latex?%5Cfrac%7BN%5C_%7B%5Ctext%7BCOVID-19%20confirmed%7D%7D%7D%7BN%5C_%7B%5Ctext%7Bpopulation%7D%7D%7D "\frac{N\_{\text{COVID-19 confirmed}}}{N\_{\text{population}}}") with data from the [global confirmed](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv) dataset and the [population, total](https://data.worldbank.org/indicator/SP.POP.TOTL) dataset from the World Bank Open Data                                                                                                                                                                                                           |
+| `gov_resp`        | 18.25 | 100   | This value is the highest stringency index (by 5/14/2020) for each country from the [Oxford Covid-19 Government Response Tracker data](https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv) from the [Oxford Covid-19 Government Response Tracker repository](https://github.com/OxCGRT/covid-policy-tracker/)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `ind_80`          | 0.15  | 1     | This index is calculated by ![\\frac{N\\\_{\\text{days with 0-80 stringency index 1/21/2020-5/14/2020}}}{N\\\_{\\text{days 1/21/2020-5/14/2020}}}](https://latex.codecogs.com/png.latex?%5Cfrac%7BN%5C_%7B%5Ctext%7Bdays%20with%200-80%20stringency%20index%201%2F21%2F2020-5%2F14%2F2020%7D%7D%7D%7BN%5C_%7B%5Ctext%7Bdays%201%2F21%2F2020-5%2F14%2F2020%7D%7D%7D "\frac{N\_{\text{days with 0-80 stringency index 1/21/2020-5/14/2020}}}{N\_{\text{days 1/21/2020-5/14/2020}}}") with data from the [Oxford Covid-19 Government Response Tracker data](https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv)                                                                                                                                                                                                        |
 
 Analysis Methods
 ----------------
@@ -119,13 +119,14 @@ Analysis Methods
 The multiple linear regression, GLM (General Linear Model), and
 bootstrapping algorithms or methods were used to study the relationship
 between the COVID-19 death rate and the portion of the senior. The
-Python programming language \[@Python\], the R programming language
-\[@R\] and the following Python/R packages were used: Pandas
-\[@mckinney-proc-scipy-2010\], requests \[@chandra2015python\], knitr
-\[@knitr\], tidyverse \[@tidyverse\], MASS \[@mass\], mice \[@mice\],
-resample \[@resample\], testthat \[@testthat\], rjson \[@rjson\], repr
-\[@repr\]. The code used to perform the analysis and create this report
-can be found here:
+Python programming language (Van Rossum and Drake 2009), the R
+programming language (R Core Team 2019) and the following Python/R
+packages were used: Pandas (McKinney 2010), requests (Chandra and
+Varanasi 2015), knitr (Xie 2014), tidyverse (Wickham 2017), MASS
+(Venables and Ripley 2002), mice (van Buuren and Groothuis-Oudshoorn
+2011), resample (Hesterberg 2015), testthat (Wickham 2011), rjson
+(Couture-Beil 2018), repr (Angerer, Kluyver, and Schulz 2019). The code
+used to perform the analysis and create this report can be found here:
 <a href="https://github.com/flizhou/age_effects_on_COVID-19" class="uri">https://github.com/flizhou/age_effects_on_COVID-19</a>.
 
 The following three functions were used to display model results and
@@ -504,3 +505,106 @@ well-designed experiments that control confounding variables.
 
 References
 ==========
+
+<div id="refs" class="references hanging-indent">
+
+<div id="ref-repr">
+
+Angerer, Philipp, Thomas Kluyver, and Jan Schulz. 2019. *Repr:
+Serializable Representations*.
+<https://CRAN.R-project.org/package=repr>.
+
+</div>
+
+<div id="ref-cdc">
+
+cdc.gov. 2020. “Older Adults.” CDC.
+<https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/older-adults.html>.
+
+</div>
+
+<div id="ref-chandra2015python">
+
+Chandra, Rakesh Vidya, and Bala Subrahmanyam Varanasi. 2015. *Python
+Requests Essentials*. Packt Publishing Ltd.
+
+</div>
+
+<div id="ref-rjson">
+
+Couture-Beil, Alex. 2018. *Rjson: JSON for R*.
+<https://CRAN.R-project.org/package=rjson>.
+
+</div>
+
+<div id="ref-resample">
+
+Hesterberg, Tim. 2015. *Resample: Resampling Functions*.
+<https://CRAN.R-project.org/package=resample>.
+
+</div>
+
+<div id="ref-mckinney-proc-scipy-2010">
+
+McKinney, Wes. 2010. “Data Structures for Statistical Computing in
+Python.” In *Proceedings of the 9th Python in Science Conference*,
+edited by Stéfan van der Walt and Jarrod Millman, 51–56.
+
+</div>
+
+<div id="ref-R">
+
+R Core Team. 2019. *R: A Language and Environment for Statistical
+Computing*. Vienna, Austria: R Foundation for Statistical Computing.
+<https://www.R-project.org/>.
+
+</div>
+
+<div id="ref-mice">
+
+van Buuren, Stef, and Karin Groothuis-Oudshoorn. 2011. “mice:
+Multivariate Imputation by Chained Equations in R.” *Journal of
+Statistical Software* 45 (3): 1–67.
+<https://www.jstatsoft.org/v45/i03/>.
+
+</div>
+
+<div id="ref-Python">
+
+Van Rossum, Guido, and Fred L. Drake. 2009. *Python 3 Reference Manual*.
+Scotts Valley, CA: CreateSpace.
+
+</div>
+
+<div id="ref-mass">
+
+Venables, W. N., and B. D. Ripley. 2002. *Modern Applied Statistics with
+S*. Fourth. New York: Springer. <http://www.stats.ox.ac.uk/pub/MASS4>.
+
+</div>
+
+<div id="ref-testthat">
+
+Wickham, Hadley. 2011. “Testthat: Get Started with Testing.” *The R
+Journal* 3: 5–10.
+<https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf>.
+
+</div>
+
+<div id="ref-tidyverse">
+
+———. 2017. *Tidyverse: Easily Install and Load the ’Tidyverse’*.
+<https://CRAN.R-project.org/package=tidyverse>.
+
+</div>
+
+<div id="ref-knitr">
+
+Xie, Yihui. 2014. “Knitr: A Comprehensive Tool for Reproducible Research
+in R.” In *Implementing Reproducible Computational Research*, edited by
+Victoria Stodden, Friedrich Leisch, and Roger D. Peng. Chapman;
+Hall/CRC. <http://www.crcpress.com/product/isbn/9781466561595>.
+
+</div>
+
+</div>
