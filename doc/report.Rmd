@@ -3,7 +3,8 @@ title: "Population aging and COVID-19 death rate relationship analysis"
 author: "Fanli Zhou"
 date: "2020/5/15"
 output: 
-  github_document:
+  html_document:
+#  github_document:
     toc: true
     pandoc_args: --webtex
 bibliography: report_refs.bib
@@ -292,7 +293,7 @@ Based on the bootstrapping results, the coefficients of `log(age_65up)`, `log(me
 
 In this analysis, I attempted to use a linear model to explain the relationship between the portion of the senior (`age_65up`%) in the population and the COVID-19 death rate. I tried several linear models and finally decided to train a generalized linear model with a Gamma-distribution dependent variable. My final model is:
 
-$\frac{132\text{rate}+2}{133}$ $=\0.0850+\0.0144\text{log(age\_65up)}-\0.0137\text{log(med\_bed)}-\0.0829\text{log(death\_100\_ind+1)}$
+$\frac{132\text{rate}+2}{133}$ $=0.0850+0.0144\text{log(age_65up)}-0.0137\text{log(med_bed)}-0.0829\text{log(death_100_ind+1)}$
 
 where the response (rate) follows a Gamma distribution.
 I understand that this is a simplified model and I may not include all possible confounding variables in the model. And the "LINE" conditions for multiple linear models may not hold for this model. So I used bootstrapping for statistical inference. Given the bootstrapping results, the coefficient of `log(age_65up)` is significant (p-value < 0.05). I have the evidence to reject the null hypothesis and accept the alternative hypothesis. So the portion of the senior (age 65 and up) in the population is positively associated with the COVID-19 death rate.
